@@ -15,7 +15,7 @@ var _focus_table_info = [
 	], {'checked': true}],
 
 	// FocusEvent - relatedTarget
-	["FocusEvent", "focusevent", [
+	["relatedTarget", "focusevent", [
 		["rA", "focusevent", "text", {'style': 'hilite_div_a'}],
 		["rB", "focusevent", "text", {'style': 'hilite_div_b'}],
 	], {'checked': true}],
@@ -27,21 +27,28 @@ var _focus_event_info = [
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'checked': false, 'class': "focusevent_hilight blur_hilight"},
+		'Highlight': {'checked': true, 'class': "focusevent_hilight blur_hilight"},
+		},
+		"#ffcccc"],
+	["focus", {
+		'preventDefault': {'checked': false},
+		'stopPropagation': {},
+		'ShowEvents': {},
+		'Highlight': {'checked': true, 'class': "focusevent_hilight focus_hilight"},
 		},
 		"#ffcccc"],
 	["focusin", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'checked': true, 'class': "focusevent_hilight focusin_hilight"},
+		'Highlight': {'checked': false, 'class': "focusevent_hilight focusin_hilight"},
 		},
 		"#e0e0e0"],
 	["focusout", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'checked': true, 'class': "focusevent_hilight focusout_hilight"},
+		'Highlight': {'checked': false, 'class': "focusevent_hilight focusout_hilight"},
 		},
 		"#ccffcc"],
 	["DOMFocusIn", {
@@ -83,8 +90,8 @@ function init() {
 	var input_a = document.getElementById("input_a");
 	var input_b = document.getElementById("input_b");
 	for (var div of [input_a, input_b]) {
-		console.log("addign focus handlers");
 		addEventListener(div, "blur", onBlur);
+		addEventListener(div, "focus", onFocus);
 		addEventListener(div, "focusin", onFocusIn);
 		addEventListener(div, "focusout", onFocusOut);
 		addEventListener(div, "DOMFocusIn", onDomFocusIn);
@@ -98,6 +105,10 @@ function init() {
 
 function onBlur(e) {
 	handleFocusEvent("blur", e);
+}
+
+function onFocus(e) {
+	handleFocusEvent("focus", e);
 }
 
 function onFocusIn(e) {
@@ -117,7 +128,6 @@ function onDomFocusOut(e) {
 }
 
 function handleFocusEvent(etype, e) {
-	console.log(etype);
 	var show = document.getElementById("show_" + etype);
 	if (show.checked) {
 		addFocusEvent(etype, e);
@@ -130,7 +140,7 @@ function addFocusEvent(etype, e) {
 		e = window.event;
 	}
 	var target = e.target.id;
-	var relatedTarget = e.relatedTarget.id;
+	var relatedTarget = e.relatedTarget ? e.relatedTarget.id : "";
 	var eventinfo = {};
 	eventinfo["Event type"] = calcHilightString(etype, e.type);
 	eventinfo["A"] = (target == "input_a" ? "A" : "");

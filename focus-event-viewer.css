@@ -67,7 +67,11 @@ input[type=checkbox]:disabled+label {
 }
 
 .blur_hilight {
-	background: #e0e0e0;
+	background: #80e0e0;
+}
+
+.focus_hilight {
+	background: #ffa0ff;
 }
 
 .focusin_hilight {
