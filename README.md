@@ -7,7 +7,7 @@ To report a bug or a submit feature request for any of these tools,
 
 ### [Key Event Viewer](https://domeventviewer.com/key-event-viewer.html)
 
-View KeyboardEvents on a `<input type="text">` element.
+View KeyboardEvents on a `<input type="text">` element:
 
 `keydown`, `keypress`, `keyup`, `textinput`, `beforeinput`, `input`, `compositionstart`, `compositionupdate`, `compositionend`
 
@@ -17,7 +17,7 @@ Same as the standard Key Event Viewer except targetting a `<div contenteditable=
 
 ### [Mouse Event Viewer](https://domeventviewer.com/mouse-event-viewer.html)
 
-View MouseEvents on a set of overlapping `<div>`s.
+View MouseEvents on a set of overlapping `<div>`s:
 
 `mousedown`, `mouseenter`, `mouseleave`, `mousemove`, `mouseout`, `mouseover`, `mouseup`
 
@@ -27,6 +27,6 @@ Same as the standard Mouse Event Viewer except with additional shadow DOM elemen
 
 ### [Focus Event Viewer](https://domeventviewer.com/focus-event-viewer.html)
 
-View FocusEvents between two edit fields.
+View FocusEvents between two edit fields:
 
 `blur`, `focus`, `focusin`, `focusout`, `DOMFocusIn`, `DOMFocusOut`
