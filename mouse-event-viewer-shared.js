@@ -91,7 +91,6 @@ function onContextMenu(e) {
 }
 
 function onMouseDown(handler, e) {
-	console.log(handler);
 	handleMouseEvent("mousedown", handler, e);
 }
 
