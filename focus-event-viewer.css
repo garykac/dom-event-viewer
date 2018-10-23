@@ -40,13 +40,19 @@
 }
 
 .target_header {
-	background-color: #ffc0ff;
+	background-color: #ffffc0;
 	font-weight: bold;
 	border: 1px solid black;
 }
 
 .focusevent_header {
 	background-color: #c0ffff;
+	font-weight: bold;
+	border: 1px solid black;
+}
+
+.handler_header {
+	background-color: #c0c0ff;
 	font-weight: bold;
 	border: 1px solid black;
 }
@@ -67,11 +73,11 @@ input[type=checkbox]:disabled+label {
 }
 
 .blur_hilight {
-	background: #80e0e0;
+	background: #ffa0a0;
 }
 
 .focus_hilight {
-	background: #ffa0ff;
+	background: #a0ffa0;
 }
 
 .focusin_hilight {
@@ -79,15 +85,15 @@ input[type=checkbox]:disabled+label {
 }
 
 .focusout_hilight {
-	background-color: #c0c0ff;
+	background: #ffcccc;
 }
 
 .domfocusin_hilight {
-	background-color: #c0ffc0;
+	background: repeating-linear-gradient(-45deg, #cfc, #cfc 8px, #fff 8px, #fff 16px);
 }
 
 .domfocusout_hilight {
-	background-color: #c0ffc0;
+	background: repeating-linear-gradient(-45deg, #fcc, #fcc 8px, #fff 8px, #fff 16px);
 }
 
 .showfieldoption {
@@ -98,12 +104,59 @@ input[type=checkbox]:disabled+label {
 	text-align: center;
 }
 
+.hilite_target_a {
+	background-color: #c0ffc0;
+	padding: 0 10px;
+}
+
+.hilite_target_b {
+	background-color: #ffc0ff;
+	padding: 0 10px;
+}
+
+.hilite_target_outer {
+	background-color: #c0c0c0;
+	padding: 0 10px;
+}
+
+.hilite_related_a {
+	background-color: #e0ffe0;
+	padding: 0 10px;
+}
+
+.hilite_related_b {
+	background-color: #ffe0ff;
+	padding: 0 10px;
+}
+
+.hilite_related_outer {
+	background-color: #f0f0f0;
+	padding: 0 10px;
+}
+
+.hilite_handler_a {
+	background-color: #e0ffe0;
+	padding: 0 10px;
+}
+
+.hilite_handler_b {
+	background-color: #ffe0ff;
+	padding: 0 10px;
+}
+
+.hilite_handler_outer {
+	background-color: #f0f0f0;
+	padding: 0 10px;
+}
+
 #output tr:hover, tr.highlight {
 	background-color: #e0e0e0;
 }
 
-.div_ce {
+#outer {
 	border: 1px solid black;
+	background-color: #f0f0f0;
+	padding: 10px 20px 5px 20px;
 }
 
 .main_link {

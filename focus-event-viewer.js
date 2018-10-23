@@ -10,57 +10,65 @@ var _focus_table_info = [
 
 	// MouseEvent - Target
 	["Target", "target", [
-		["A", "target", "text", {'style': 'hilite_div_a'}],
-		["B", "target", "text", {'style': 'hilite_div_b'}],
+		["A", "target", "text", {'style': 'hilite_target_a'}],
+		["B", "target", "text", {'style': 'hilite_target_b'}],
+		["Outer", "target", "text", {'style': 'hilite_target_outer'}],
 	], {'checked': true}],
 
 	// FocusEvent - relatedTarget
 	["relatedTarget", "focusevent", [
-		["rA", "focusevent", "text", {'style': 'hilite_div_a'}],
-		["rB", "focusevent", "text", {'style': 'hilite_div_b'}],
+		["rA", "focusevent", "text", {'style': 'hilite_related_a'}],
+		["rB", "focusevent", "text", {'style': 'hilite_related_b'}],
+		["rOuter", "focusevent", "text", {'style': 'hilite_related_outer'}],
 	], {'checked': true}],
 
+	// FocusEvent - Handler
+	["Handler", "handler", [
+		["hA", "handler", "text", {'style': 'hilite_handler_a'}],
+		["hB", "handler", "text", {'style': 'hilite_handler_b'}],
+		["hOuter", "handler", "text", {'style': 'hilite_handler_outer'}],
+	], {'checked': true}],
 ];
 
 var _focus_event_info = [
 	["blur", {
 		'preventDefault': {'checked': false},
-		'stopPropagation': {},
+		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
 		'Highlight': {'checked': true, 'class': "focusevent_hilight blur_hilight"},
 		},
 		"#ffcccc"],
 	["focus", {
 		'preventDefault': {'checked': false},
-		'stopPropagation': {},
+		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
 		'Highlight': {'checked': true, 'class': "focusevent_hilight focus_hilight"},
 		},
 		"#ffcccc"],
 	["focusin", {
 		'preventDefault': {'checked': false},
-		'stopPropagation': {},
+		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
 		'Highlight': {'checked': false, 'class': "focusevent_hilight focusin_hilight"},
 		},
 		"#e0e0e0"],
 	["focusout", {
 		'preventDefault': {'checked': false},
-		'stopPropagation': {},
+		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
 		'Highlight': {'checked': false, 'class': "focusevent_hilight focusout_hilight"},
 		},
 		"#ccffcc"],
 	["DOMFocusIn", {
 		'preventDefault': {'checked': false},
-		'stopPropagation': {},
+		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
 		'Highlight': {'checked': false, 'class': "focusevent_hilight domfocusin_hilight"},
 		},
 		"#ffffff"],
 	["DOMFocusOut", {
 		'preventDefault': {'checked': false},
-		'stopPropagation': {},
+		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
 		'Highlight': {'checked': false, 'class': "focusevent_hilight domfocusout_hilight"},
 		},
@@ -75,10 +83,11 @@ function setUserAgentText() {
 }
 
 function resetTable(resetData=true) {
+	// Reset focus first so the we clear out the events related to it.
+	setInputFocus(resetData);
+
 	clearTable();
 	initOutputTable(_focus_table_info);
-
-	//setInputFocus(resetData);
 }
 
 function init() {
@@ -89,13 +98,14 @@ function init() {
 
 	var input_a = document.getElementById("input_a");
 	var input_b = document.getElementById("input_b");
-	for (var div of [input_a, input_b]) {
-		addEventListener(div, "blur", onBlur);
-		addEventListener(div, "focus", onFocus);
-		addEventListener(div, "focusin", onFocusIn);
-		addEventListener(div, "focusout", onFocusOut);
-		addEventListener(div, "DOMFocusIn", onDomFocusIn);
-		addEventListener(div, "DOMFocusOut", onDomFocusOut);
+	var outer = document.getElementById("outer");
+	for (var div of [input_a, input_b, outer]) {
+		addEventListener(div, "blur", onBlur.bind(null, div));
+		addEventListener(div, "focus", onFocus.bind(null, div));
+		addEventListener(div, "focusin", onFocusIn.bind(null, div));
+		addEventListener(div, "focusout", onFocusOut.bind(null, div));
+		addEventListener(div, "DOMFocusIn", onDomFocusIn.bind(null, div));
+		addEventListener(div, "DOMFocusOut", onDomFocusOut.bind(null, div));
 	}
 }
 
@@ -103,50 +113,60 @@ function init() {
 // Focus events: blur, focusin, focusout
 // =====
 
-function onBlur(e) {
-	handleFocusEvent("blur", e);
+function onBlur(handler, e) {
+	handleFocusEvent("blur", handler, e);
 }
 
-function onFocus(e) {
-	handleFocusEvent("focus", e);
+function onFocus(handler, e) {
+	handleFocusEvent("focus", handler, e);
 }
 
-function onFocusIn(e) {
-	handleFocusEvent("focusin", e);
+function onFocusIn(handler, e) {
+	handleFocusEvent("focusin", handler, e);
 }
 
-function onFocusOut(e) {
-	handleFocusEvent("focusout", e);
+function onFocusOut(handler, e) {
+	handleFocusEvent("focusout", handler, e);
 }
 
-function onDomFocusIn(e) {
-	handleFocusEvent("DOMFocusIn", e);
+function onDomFocusIn(handler, e) {
+	handleFocusEvent("DOMFocusIn", handler, e);
 }
 
-function onDomFocusOut(e) {
-	handleFocusEvent("DOMFocusOut", e);
+function onDomFocusOut(handler, e) {
+	handleFocusEvent("DOMFocusOut", handler, e);
 }
 
-function handleFocusEvent(etype, e) {
+function handleFocusEvent(etype, handler, e) {
 	var show = document.getElementById("show_" + etype);
 	if (show.checked) {
-		addFocusEvent(etype, e);
+		addFocusEvent(etype, handler, e);
 	}
 	handleDefaultPropagation(etype, e);
 }
 
-function addFocusEvent(etype, e) {
+function addFocusEvent(etype, handler, e) {
 	if (!e) {
 		e = window.event;
 	}
 	var target = e.target.id;
 	var relatedTarget = e.relatedTarget ? e.relatedTarget.id : "";
+	var handler = handler.id;
 	var eventinfo = {};
+
 	eventinfo["Event type"] = calcHilightString(etype, e.type);
+
 	eventinfo["A"] = (target == "input_a" ? "A" : "");
 	eventinfo["B"] = (target == "input_b" ? "B" : "");
+	eventinfo["Outer"] = (target == "outer" ? "Outer" : "");
+
 	eventinfo["rA"] = (relatedTarget == "input_a" ? "A" : "");
 	eventinfo["rB"] = (relatedTarget == "input_b" ? "B" : "");
+	eventinfo["rOuter"] = (relatedTarget == "outer" ? "Outer" : "");
+
+	eventinfo["hA"] = (handler == "input_a" ? (handler == target ? "-" : "A") : "");
+	eventinfo["hB"] = (handler == "input_b" ? (handler == target ? "-" : "B") : "");
+	eventinfo["hOuter"] = (handler == "outer" ? (handler == target ? "-" : "Outer") : "");
 
 	addEventToOutput(eventinfo);
 }
