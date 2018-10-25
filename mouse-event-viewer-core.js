@@ -7,21 +7,30 @@ var _mouse_table_info = [
 		["#", "etype", "text"],
 		["Event type", "etype", "html"],
 		["Count", "etype", "text"],
-	], {'grouplabel': false}],
+	], {
+		'grouplabel': false,
+		'header-background': "#e0e0e0"
+	}],
 
 	// MouseEvent - Target
 	["Target", "target", [
 		["A", "target", "text", {'style': 'hilite_div_a'}],
 		["B", "target", "text", {'style': 'hilite_div_b'}],
 		["C", "target", "text", {'style': 'hilite_div_c'}],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#ffffff"
+	}],
 
 	// MouseEvent - Handler
 	["Handler", "handler", [
 		["hA", "handler", "text", {'style': 'hilite_handler_a'}],
 		["hB", "handler", "text", {'style': 'hilite_handler_b'}],
 		["hC", "handler", "text", {'style': 'hilite_handler_c'}],
-	], {'checked': false}],
+	], {
+		'checked': false,
+		'header-background': "#c0c0ff"
+	}],
 
 	// Event
 	["Event", "event", [
@@ -32,13 +41,19 @@ var _mouse_table_info = [
 		["composed", "event", "bool"],
 		["isTrusted", "event", "bool"],
 		["timeStamp", "event", "text"],
-	], {'checked': false}],
+	], {
+		'checked': false,
+		'header-background': "#a0ffff"
+	}],
 
 	// UIEvent
 	["UIEvent", "uievent", [
 		["view", "uievent", "text"],
 		["detail", "uievent", "text"],
-	], {'checked': false}],
+	], {
+		'checked': false,
+		'header-background': "#ffffff"
+	}],
 
 	// MouseEvent - UI Events
 	["MouseEvent", "mouseevent", [
@@ -46,13 +61,19 @@ var _mouse_table_info = [
 		["screenY", "mouseevent", "text"],
 		["clientX", "mouseevent", "text"],
 		["clientY", "mouseevent", "text"],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#ffffc0"
+	}],
 
 	// PointerLock
 	["PointerLock", "plock", [
 		["movementX", "plock", "text"],
 		["movementY", "plock", "text"],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#e0a0e0"
+	}],
 
 	// CSSOM
 	["CSSOM", "cssom", [
@@ -62,13 +83,19 @@ var _mouse_table_info = [
 		["pageY", "cssom", "text"],
 		["x", "cssom", "text"],
 		["y", "cssom", "text"],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#c0f0c0"
+	}],
 
 	// MouseEvent - UI Events
 	["Buttons", "buttons", [
 		["button", "buttons", "text"],
 		["buttons", "buttons", "text"],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#e0e0e0"
+	}],
 
 	// KeyboardEvent - Modifiers
 	["Modifiers", "modifiers", [
@@ -77,7 +104,10 @@ var _mouse_table_info = [
 		["ctrl", "modifiers", "bool"],
 		["alt", "modifiers", "bool"],
 		["meta", "modifiers", "bool"],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#ffc0c0"
+	}],
 ];
 
 function init() {

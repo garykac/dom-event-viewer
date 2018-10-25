@@ -6,14 +6,20 @@ var _key_table_info = [
 	["", "etype", [
 		["#", "etype", "text"],
 		["Event type", "etype", "html"],
-	], {'grouplabel': false}],
+	], {
+		'grouplabel': false,
+		'header-background': "#e0e0e0"
+	}],
 
 	// KeyboardEvent - Legacy
 	["Legacy", "legacy", [
 		["charCode", "legacy", "html"],
 		["keyCode", "legacy", "html"],
 		["which", "legacy", "text"],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#c0ffc0"
+	}],
 
 	// KeyboardEvent - Modifiers
 	["Modifiers", "modifiers", [
@@ -22,14 +28,20 @@ var _key_table_info = [
 		["ctrl", "modifiers", "bool"],
 		["alt", "modifiers", "bool"],
 		["meta", "modifiers", "bool"],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#ffc0ff"
+	}],
 
 	// KeyboardEvent - Old DOM3
 	["Old DOM3", "olddom3", [
 		["keyIdentifier", "olddom3", "text"],
 		["keyLocation", "olddom3", "text"],
 		["char", "olddom3", "text"],
-	], {'checked': false}],
+	], {
+		'checked': false,
+		'header-background': "#ffc0c0"
+	}],
 
 	// KeyboardEvent - UI Events
 	["UI Events", "uievents", [
@@ -40,17 +52,27 @@ var _key_table_info = [
 		["isComposing", "uievents", "bool"],
 		["inputType", "uievents", "text"],
 		["data", "uievents", "text"],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#c0ffff"
+	}],
 
 	// KeyboardEvent - Proposed
 	["Proposed", "proposed", [
 		["locale", "proposed", "text"],
-	], {'checked': false}],
+	], {
+		'checked': false,
+		'header-background': "#ffffc0"
+	}],
 
 	// Input
 	["Input", "inputbox", [
 		["Input field", "inputbox", "text", {'align': 'left'}],
-	], {'checked': true, 'grouplabel': false}],
+	], {
+		'checked': true,
+		'grouplabel': false,
+		'header-background': "#e0e0e0"
+	}],
 ];
 
 var _key_event_info = [
@@ -155,7 +177,7 @@ function init() {
 	}
 
 	createOptions(document.getElementById("options"), _key_event_info, _key_table_info, extra_options);
-	injectCustomCSS(_key_event_info);
+	injectCustomCSS(_key_event_info, _key_table_info);
 	resetTable(false);
 
 	var input = document.getElementById("input");

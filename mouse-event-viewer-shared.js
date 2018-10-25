@@ -75,7 +75,7 @@ function init_shared() {
 		["text", "Press 'c' to Clear Table."],
 	];
 	createOptions(document.getElementById("options"), _mouse_event_info, _mouse_table_info, extra_options);
-	injectCustomCSS(_mouse_event_info);
+	injectCustomCSS(_mouse_event_info, _mouse_table_info);
 	resetTable();
 }
 

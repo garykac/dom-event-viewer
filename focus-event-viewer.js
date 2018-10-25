@@ -6,28 +6,40 @@ var _focus_table_info = [
 	["", "etype", [
 		["#", "etype", "text"],
 		["Event type", "etype", "html"],
-	], {'grouplabel': false}],
+	], {
+		'grouplabel': false,
+		'header-background': "#e0e0e0"
+	}],
 
-	// MouseEvent - Target
+	// Event - Target
 	["Target", "target", [
 		["A", "target", "text", {'style': 'hilite_target_a'}],
 		["B", "target", "text", {'style': 'hilite_target_b'}],
 		["Outer", "target", "text", {'style': 'hilite_target_outer'}],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#ffffc0"
+	}],
 
 	// FocusEvent - relatedTarget
 	["relatedTarget", "focusevent", [
 		["rA", "focusevent", "text", {'style': 'hilite_related_a'}],
 		["rB", "focusevent", "text", {'style': 'hilite_related_b'}],
 		["rOuter", "focusevent", "text", {'style': 'hilite_related_outer'}],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#c0ffff"
+	}],
 
 	// FocusEvent - Handler
 	["Handler", "handler", [
 		["hA", "handler", "text", {'style': 'hilite_handler_a'}],
 		["hB", "handler", "text", {'style': 'hilite_handler_b'}],
 		["hOuter", "handler", "text", {'style': 'hilite_handler_outer'}],
-	], {'checked': true}],
+	], {
+		'checked': true,
+		'header-background': "#c0c0ff"
+	}],
 ];
 
 var _focus_event_info = [
@@ -94,7 +106,7 @@ function init() {
 	setUserAgentText();
 
 	createOptions(document.getElementById("options"), _focus_event_info, _focus_table_info, []);
-	injectCustomCSS(_focus_event_info);
+	injectCustomCSS(_focus_event_info, _focus_table_info);
 	resetTable(false);
 
 	var input_a = document.getElementById("input_a");

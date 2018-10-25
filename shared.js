@@ -111,7 +111,7 @@ function calcHilightString(eventType, data, addArrow) {
 
 // CSS Stylesheet management
 
-function injectCustomCSS(event_info) {
+function injectCustomCSS(event_info, table_info) {
 	// Find style sheet to inject into.
 	var sheet = undefined;
 	for (var i = 0; i < document.styleSheets.length; i++) {
@@ -127,6 +127,17 @@ function injectCustomCSS(event_info) {
 			var background = event[2];
 			if (background != "") {
 				sheet.insertRule("." + ename.toLowerCase() + "_hilight { background: " + background + "; }", 0);
+			}
+		}
+
+		for (var group of table_info) {
+			var name = group[0];
+			var type = group[1];
+			var options = group[3];
+			if (options && options['header-background']) {
+				var background = options['header-background'];
+				var cssRule = "." + type + "_header { background-color: " + background + "; font-weight: bold; border: 1px solid black; }";
+				sheet.insertRule(cssRule, 0);
 			}
 		}
 	}
