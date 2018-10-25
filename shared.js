@@ -98,7 +98,7 @@ function calcHilightString(eventType, data, addArrow) {
 	var enableHilight = document.getElementById("hl_" + eventType);
 	if (enableHilight && enableHilight.checked) {
 		keySpan.classList.add("event_hilight");
-		keySpan.classList.add(eventType + "_hilight");
+		keySpan.classList.add(eventType.toLowerCase() + "_hilight");
 
 		// Extra classes for keyboard event viewer.
 		if (addArrow && (eventType == "keydown" || eventType == "keyup")) {

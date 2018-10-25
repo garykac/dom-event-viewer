@@ -18,13 +18,19 @@ function createOptions(options_div, event_info, table_info, extra) {
 	for (var col of _column_info) {
 		var name = col[0];
 		var prefix = col[1];
-		
+
 		cell = document.createElement('td');
 		cell.classList.add("optcell");
 		addOptionTitle(cell, name);
 		for (var event of event_info) {
 			var e = event[0];
 			var options = event[1][name];
+			if (name == "Highlight" && (options.enabled == undefined || options.enabled)) {
+				var classes = "event_hilight " + e.toLowerCase() + "_hilight";
+				if (options.class != undefined)
+					classes += " " + options.class;
+				options.class = classes;
+			}
 			addOptionCheckbox(cell, prefix + e, e, options);
 		}
 		row.appendChild(cell);
