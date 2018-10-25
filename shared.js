@@ -24,8 +24,6 @@ function addEventListener(obj, etype, handler) {
 
 function handleDefaultPropagation(etype, e) {
 	var preventDefault = document.getElementById("pd_" + etype);
-	console.log("preventDefault for " + etype + " ");
-	console.log(preventDefault);
 	if (preventDefault.checked && e.preventDefault) {
 		e.preventDefault();
 	}
@@ -89,4 +87,47 @@ function calcString(data) {
 		return data;
 	}
 	return "'" + data + "'";
+}
+
+function calcHilightString(eventType, data, addArrow) {
+	if (data === undefined) {
+		return null;
+	}
+
+	var keySpan = document.createElement("span");
+	var enableHilight = document.getElementById("hl_" + eventType);
+	if (enableHilight && enableHilight.checked) {
+		keySpan.classList.add("event_hilight");
+		keySpan.classList.add(eventType + "_hilight");
+
+		// Extra classes for keyboard event viewer.
+		if (addArrow && (eventType == "keydown" || eventType == "keyup")) {
+			keySpan.classList.add(eventType + "_arrow");
+		}
+	}
+	keySpan.textContent = data;
+	return keySpan;
+}
+
+// CSS Stylesheet management
+
+function injectCustomCSS(event_info) {
+	// Find style sheet to inject into.
+	var sheet = undefined;
+	for (var i = 0; i < document.styleSheets.length; i++) {
+		if (document.styleSheets[i].title == "inject") {
+			sheet = document.styleSheets[i];
+		}
+	}
+
+	if (sheet) {
+		for (var event of event_info) {
+			var ename = event[0];
+			var options = event[1][name];
+			var background = event[2];
+			if (background != "") {
+				sheet.insertRule("." + ename.toLowerCase() + "_hilight { background: " + background + "; }", 0);
+			}
+		}
+	}
 }

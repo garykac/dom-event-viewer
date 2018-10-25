@@ -22,37 +22,6 @@
 	border: 1px solid black;
 }
 
-.focusevent_hilight {
-	border: 1px solid #404040;
-	border-radius: 4px;
-	padding: 0 3px 0 3px;
-	margin-left: 3px;
-}
-
-.blur_hilight {
-	background: #ffa0a0;
-}
-
-.focus_hilight {
-	background: #a0ffa0;
-}
-
-.focusin_hilight {
-	background: #ccffcc;
-}
-
-.focusout_hilight {
-	background: #ffcccc;
-}
-
-.domfocusin_hilight {
-	background: repeating-linear-gradient(-45deg, #cfc, #cfc 8px, #fff 8px, #fff 16px);
-}
-
-.domfocusout_hilight {
-	background: repeating-linear-gradient(-45deg, #fcc, #fcc 8px, #fff 8px, #fff 16px);
-}
-
 .hilite_target_a {
 	background-color: #c0ffc0;
 	padding: 0 10px;

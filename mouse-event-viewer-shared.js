@@ -6,49 +6,49 @@ var _mouse_event_info = [
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'class': "mouseevent_hilight mousedown_hilight"},
+		'Highlight': {'class': "event_hilight mousedown_hilight"},
 		},
 		"#e0e0e0"],
 	["mouseenter", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {'enabled': false, 'checked': false},
 		'ShowEvents': {},
-		'Highlight': {'class': "mouseevent_hilight mouseenter_hilight"},
+		'Highlight': {'class': "event_hilight mouseenter_hilight"},
 		},
 		"#ccffcc"],
 	["mouseleave", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {'enabled': false, 'checked': false},
 		'ShowEvents': {},
-		'Highlight': {'class': "mouseevent_hilight mouseleave_hilight"},
+		'Highlight': {'class': "event_hilight mouseleave_hilight"},
 		},
 		"#ffcccc"],
 	["mousemove", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'checked': false, 'class': "mouseevent_hilight mousemove_hilight"},
+		'Highlight': {'checked': false, 'class': "event_hilight mousemove_hilight"},
 		},
 		"#ffffff"],
 	["mouseout", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'checked': false, 'class': "mouseevent_hilight mouseout_hilight"},
+		'Highlight': {'checked': false, 'class': "event_hilight mouseout_hilight"},
 		},
 		"repeating-linear-gradient(-45deg, #fcc, #fcc 8px, #fff 8px, #fff 16px)"],
 	["mouseover", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'checked': false, 'class': "mouseevent_hilight mouseover_hilight"},
+		'Highlight': {'checked': false, 'class': "event_hilight mouseover_hilight"},
 		},
 		"repeating-linear-gradient(-45deg, #cfc, #cfc 8px, #fff 8px, #fff 16px)"],
 	["mouseup", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'class': "mouseevent_hilight mouseup_hilight"},
+		'Highlight': {'class': "event_hilight mouseup_hilight"},
 		},
 		"#e0e0e0"],
 ];
@@ -75,6 +75,7 @@ function init_shared() {
 		["text", "Press 'c' to Clear Table."],
 	];
 	createOptions(document.getElementById("options"), _mouse_event_info, _mouse_table_info, extra_options);
+	injectCustomCSS(_mouse_event_info);
 	resetTable();
 }
 
@@ -202,23 +203,3 @@ function addMouseEvent(etype, handler, e) {
 
 	addEventToOutput(eventinfo);
 }
-
-// =====
-// Helper functions
-// =====
-
-function calcHilightString(eventType, data) {
-	if (data === undefined) {
-		return null;
-	}
-
-	var keySpan = document.createElement("span");
-	var enableHilight = document.getElementById("hl_" + eventType);
-	if (enableHilight && enableHilight.checked) {
-		keySpan.classList.add("mouseevent_hilight");
-		keySpan.classList.add(eventType + "_hilight");
-	}
-	keySpan.textContent = data;
-	return keySpan;
-}
-

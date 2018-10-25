@@ -7,7 +7,7 @@ var _key_table_info = [
 		["#", "etype", "text"],
 		["Event type", "etype", "html"],
 	], {'grouplabel': false}],
-	
+
 	// KeyboardEvent - Legacy
 	["Legacy", "legacy", [
 		["charCode", "legacy", "html"],
@@ -58,30 +58,30 @@ var _key_event_info = [
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'class': "keyevent_hilight keydown_hilight keydown_arrow"},
+		'Highlight': {'class': "event_hilight keydown_hilight keydown_arrow"},
 		},
-		"#e0e0e0"],
+		"#c0ffc0"],
 	["keypress", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'checked': false, 'class': "keyevent_hilight keypress_hilight"},
+		'Highlight': {'checked': false, 'class': "event_hilight keypress_hilight"},
 		},
-		"#ccffcc"],
+		"#c0c0ff"],
 	["keyup", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
 		'ShowEvents': {},
-		'Highlight': {'class': "keyevent_hilight keyup_hilight keyup_arrow"},
+		'Highlight': {'class': "event_hilight keyup_hilight keyup_arrow"},
 		},
-		"#ffcccc"],
+		"#ffc0c0"],
 	["textinput", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {'checked': false},
 		'ShowEvents': {'checked': false},
 		'Highlight': {'enabled': false, 'checked': false},
 		},
-		"#ffffff"],
+		""],
 	["beforeinput", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {},
@@ -155,6 +155,7 @@ function init() {
 	}
 
 	createOptions(document.getElementById("options"), _key_event_info, _key_table_info, extra_options);
+	injectCustomCSS(_key_event_info);
 	resetTable(false);
 
 	var input = document.getElementById("input");
@@ -320,7 +321,7 @@ function calcInput() {
 /* Set the focus to the input box. */
 function setInputFocus(resetData) {
 	var input = document.getElementById("input");
-	
+
 	if (resetData) {
 		if (input.tagName == "DIV") {
 			// <div contenteditable>
@@ -387,7 +388,7 @@ function calcRichKeyVal(eventType, attrName, key) {
 		data.appendChild(document.createTextNode(key));
 		var keySpan = document.createElement("span");
 		if (document.getElementById("hl_" + eventType).checked) {
-			keySpan.classList.add("keyevent_hilight");
+			keySpan.classList.add("event_hilight");
 			keySpan.classList.add(eventType + "_hilight");
 		} else {
 			keyString = " " + keyString;
@@ -397,24 +398,6 @@ function calcRichKeyVal(eventType, attrName, key) {
 		return data;
 	}
 	return document.createTextNode(key);
-}
-
-function calcHilightString(eventType, data, addArrow) {
-	if (data === undefined) {
-		return null;
-	}
-
-	var keySpan = document.createElement("span");
-	var enableHilight = document.getElementById("hl_" + eventType);
-	if (enableHilight && enableHilight.checked) {
-		keySpan.classList.add("keyevent_hilight");
-		keySpan.classList.add(eventType + "_hilight");
-		if (addArrow && (eventType == "keydown" || eventType == "keyup")) {
-			keySpan.classList.add(eventType + "_arrow");
-		}
-	}
-	keySpan.textContent = data;
-	return keySpan;
 }
 
 function toggleReadonly() {

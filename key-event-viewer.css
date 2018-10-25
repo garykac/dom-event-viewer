@@ -40,21 +40,6 @@
 	border: 1px solid black;
 }
 
-.keyevent_hilight {
-	border: 1px solid #404040;
-	border-radius: 4px;
-	padding: 0 3px 0 3px;
-	margin-left: 3px;
-}
-
-.keypress_hilight {
-	background-color: #c0c0ff;
-}
-
-.keydown_hilight {
-	background-color: #c0ffc0;
-}
-
 .keydown_row_hilight {
 	background-color: #e0ffe0;
 }
@@ -65,10 +50,6 @@ tr .keydown_row_hilight:hover {
 
 .keydown_arrow:after {
   content: " ⬇";
-}
-
-.keyup_hilight {
-	background-color: #ffc0c0;
 }
 
 .keyup_arrow:after {

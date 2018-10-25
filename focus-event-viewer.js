@@ -35,42 +35,42 @@ var _focus_event_info = [
 		'preventDefault': {'checked': false},
 		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
-		'Highlight': {'checked': true, 'class': "focusevent_hilight blur_hilight"},
+		'Highlight': {'checked': true, 'class': "event_hilight blur_hilight"},
 		},
-		"#ffcccc"],
+		"#ffa0a0"],
 	["focus", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
-		'Highlight': {'checked': true, 'class': "focusevent_hilight focus_hilight"},
+		'Highlight': {'checked': true, 'class': "event_hilight focus_hilight"},
 		},
-		"#ffcccc"],
+		"#a0ffa0"],
 	["focusin", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
-		'Highlight': {'checked': false, 'class': "focusevent_hilight focusin_hilight"},
+		'Highlight': {'checked': false, 'class': "event_hilight focusin_hilight"},
 		},
-		"#e0e0e0"],
+		"#ccffcc"],
 	["focusout", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
-		'Highlight': {'checked': false, 'class': "focusevent_hilight focusout_hilight"},
+		'Highlight': {'checked': false, 'class': "event_hilight focusout_hilight"},
 		},
-		"#ccffcc"],
+		"#ffcccc"],
 	["DOMFocusIn", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
-		'Highlight': {'checked': false, 'class': "focusevent_hilight domfocusin_hilight"},
+		'Highlight': {'checked': false, 'class': "event_hilight domfocusin_hilight"},
 		},
-		"#ffffff"],
+		"repeating-linear-gradient(-45deg, #cfc, #cfc 8px, #fff 8px, #fff 16px)"],
 	["DOMFocusOut", {
 		'preventDefault': {'checked': false},
 		'stopPropagation': {'checked': false},
 		'ShowEvents': {},
-		'Highlight': {'checked': false, 'class': "focusevent_hilight domfocusout_hilight"},
+		'Highlight': {'checked': false, 'class': "event_hilight domfocusout_hilight"},
 		},
 		"repeating-linear-gradient(-45deg, #fcc, #fcc 8px, #fff 8px, #fff 16px)"],
 ];
@@ -94,6 +94,7 @@ function init() {
 	setUserAgentText();
 
 	createOptions(document.getElementById("options"), _focus_event_info, _focus_table_info, []);
+	injectCustomCSS(_focus_event_info);
 	resetTable(false);
 
 	var input_a = document.getElementById("input_a");
@@ -186,19 +187,3 @@ function setInputFocus(resetData) {
 	// Set focus.
 	input.focus();
 }
-
-function calcHilightString(eventType, data) {
-	if (data === undefined) {
-		return null;
-	}
-
-	var keySpan = document.createElement("span");
-	var enableHilight = document.getElementById("hl_" + eventType);
-	if (enableHilight && enableHilight.checked) {
-		keySpan.classList.add("focusevent_hilight");
-		keySpan.classList.add(eventType + "_hilight");
-	}
-	keySpan.textContent = data;
-	return keySpan;
-}
-

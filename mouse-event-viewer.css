@@ -58,41 +58,6 @@
 	border: 1px solid black;
 }
 
-.mouseevent_hilight {
-	border: 1px solid #404040;
-	border-radius: 4px;
-	padding: 0 3px 0 3px;
-	margin-left: 3px;
-}
-
-.mousedown_hilight {
-	background: #e0e0e0;
-}
-
-.mouseenter_hilight {
-	background: #ccffcc;
-}
-
-.mouseleave_hilight {
-	background: #ffcccc;
-}
-
-.mousemove_hilight {
-	background: #ffffff;
-}
-
-.mouseout_hilight {
-	background: repeating-linear-gradient(-45deg, #fcc, #fcc 8px, #fff 8px, #fff 16px);
-}
-
-.mouseover_hilight {
-	background: repeating-linear-gradient(-45deg, #cfc, #cfc 8px, #fff 8px, #fff 16px);
-}
-
-.mouseup_hilight {
-	background: #e0e0e0;
-}
-
 .hilite_div_a {
 	background-color: #c0ffc0;
 	padding: 0 10px;

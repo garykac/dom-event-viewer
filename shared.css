@@ -65,6 +65,13 @@ input[type=checkbox]:disabled+label {
 	background-color: #e0e0e0;
 }
 
+.event_hilight {
+	border: 1px solid #404040;
+	border-radius: 4px;
+	padding: 0 3px 0 3px;
+	margin-left: 3px;
+}
+
 .main_link {
 	float: right;
 	border: 1px solid black;
