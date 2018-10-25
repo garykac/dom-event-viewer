@@ -1,34 +1,87 @@
+h1 {
+	font-family: "Arial Black";
+	font-size: 24pt;
+	text-align: center;
+}
+
 body {
+	font-family: "Arial";
+	font-size: 10pt;
 	margin: 40px auto;
 	background-color: #ffffff;
 	max-width: 800px;
 }
 
-ul {
+img {
 	padding: 0;
 	margin: 0;
-	list-style-type: none;
+	display: block;
+	vertical-align: top;
 }
 
-li {
-	margin: 10px;
-	padding: 10px;
+.container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.row {
 	border: 1px solid black;
-	border-radius: 10px;
+	border-collapse: collapse;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	padding: 0;
+	margin: 0;
+}
+
+.row:not(:first-child) {
+  margin-top: -1px;
+}
+
+.sideimage {
+	flex-basis: 100px;
+}
+
+.viewer-list {
+	flex-basis: auto;
 }
 
 code {
-	font-size: 11pt;
+	font-size: 10pt;
 	font-style: bold;
 }
 
 .name {
 	display: block;
+	font-family: "Arial Black";
 	font-size: 16pt;
 	font-style: bold;
+	margin: 5px 10px;
+}
+
+.name a {
+	text-decoration: none;
+}
+
+.name2 {
+	display: block;
+	font-family: "Arial Black";
+	font-size: 12pt;
+	font-style: bold;
+	margin: 5px 10px;
+}
+
+.name2 a {
+	text-decoration: none;
 }
 
 .desc {
 	display: block;
-	margin: 10px 0 0 0;
+	margin: 10px 10px;
 }
