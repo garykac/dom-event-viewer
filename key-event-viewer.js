@@ -164,7 +164,7 @@ function init() {
 	setUserAgentText();
 	var extra_options = [
 		["checkbox", "readonlyToggle", "Read only <input>", {
-			'onclick': "toggleReadonly()",
+			'onclick': "updateReadonly()",
 			'checked': false,
 		}],
 		["text", "Note: Options apply to new events only."],
@@ -178,6 +178,7 @@ function init() {
 
 	createOptions(document.getElementById("options"), _key_event_info, _key_table_info, extra_options);
 	injectCustomCSS(_key_event_info, _key_table_info);
+	updateReadonly();
 	resetTable(false);
 
 	var input = document.getElementById("input");
@@ -422,7 +423,7 @@ function calcRichKeyVal(eventType, attrName, key) {
 	return document.createTextNode(key);
 }
 
-function toggleReadonly() {
+function updateReadonly() {
 	var cbReadonly = document.getElementById("readonlyToggle");
 	var input = document.getElementById("input");
 	if (cbReadonly.checked) {
@@ -430,5 +431,6 @@ function toggleReadonly() {
 	} else {
 		input.removeAttribute('readonly');
 	}
+	onOptionClick(cbReadonly);
 	setInputFocus(false);
 }

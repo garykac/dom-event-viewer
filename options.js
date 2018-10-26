@@ -31,6 +31,7 @@ function createOptions(options_div, event_info, table_info, extra) {
 					classes += " " + options.class;
 				options.class = classes;
 			}
+			options.onclick = 'onOptionClick(this)';
 			addOptionCheckbox(cell, prefix + e, e, options);
 		}
 		row.appendChild(cell);
@@ -71,6 +72,9 @@ function createOptions(options_div, event_info, table_info, extra) {
 				var name = opt[1];
 				var label = opt[2];
 				var options = opt[3];
+				if (options.onclick === undefined) {
+					options.onclick = 'onOptionClick(this)';
+				}
 				addOptionCheckbox(cell, name, label, options);
 			} else if (type == "text") {
 				var text = opt[1];
@@ -98,6 +102,12 @@ function addOptionCheckbox(cell, id, text, options) {
 		options.enabled = true;
 	if (options.checked === undefined)
 		options.checked = true;
+
+	// Apply previously saved value (if any).
+	var savedValue = window.localStorage.getItem(id);
+	if (savedValue != null) {
+		options.checked = (savedValue == "true");
+	}
 
     var input = document.createElement("input");
     input.type = "checkbox";
@@ -153,7 +163,13 @@ function toggleOptions() {
 	}
 }
 
+function onOptionClick(cb) {
+	window.localStorage.setItem(cb.id, cb.checked);
+}
+
 function showFieldClick(cb) {
+	onOptionClick(cb);
+
 	var celltype = cb.id.split('_')[1];
 	var show = cb.checked;
 
