@@ -1,7 +1,32 @@
+h1 {
+	font-family: "Arial Black";
+	font-size: 20pt;
+}
+
 .subtitle {
 	font-size: 12pt;
 	font-style: italic;
 }
+
+body {
+	font-family: "Arial";
+	font-size: 10pt;
+	margin: 10px;
+	padding: 0 20px;
+	background-color: #ffffff;
+}
+
+.main_link {
+	float: right;
+	border: 1px solid black;
+	border-radius: 4px;
+	font-size: 9pt;
+	padding: 2px 4px;
+	text-decoration: none;
+	background-color: #e0e0ff;
+}
+
+/* Options table */
 
 #options {
 	display: none;
@@ -24,6 +49,20 @@
 .opttitle {
 	font-weight: bold;
 }
+
+input[type=checkbox]:disabled+label {
+	color: #a0a0a0;
+}
+
+.showfieldoption {
+	font-weight: normal;
+	padding: 0 5px 0 5px;
+	display: inline-block;
+	min-width: 90px;
+	text-align: center;
+}
+
+/* Event table */
 
 .empty {
 	background-color: #ffffff;
@@ -49,22 +88,11 @@
 	color: #a0a0a0;
 }
 
-input[type=checkbox]:disabled+label {
-	color: #a0a0a0;
-}
-
-.showfieldoption {
-	font-weight: normal;
-	padding: 0 5px 0 5px;
-	display: inline-block;
-	min-width: 90px;
-	text-align: center;
-}
-
 #output tr:hover, tr.highlight {
 	background-color: #e0e0e0;
 }
 
+/* Common event highlighting */
 .event_hilight {
 	border: 1px solid #404040;
 	border-radius: 4px;
@@ -72,23 +100,8 @@ input[type=checkbox]:disabled+label {
 	margin-left: 3px;
 }
 
-.main_link {
-	float: right;
-	border: 1px solid black;
-	border-radius: 4px;
-	font-size: 9pt;
-	padding: 2px 4px;
-	text-decoration: none;
-	background-color: #e0e0ff;
-}
-
-body {
-	margin: 10px;
-	padding: 0 20px;
-	background-color: #ffffff;
-}
-
 /* Fix for black background in Fullscreen (Chrome). */
+
 html {
 	background-color: #ffffff;
 }
