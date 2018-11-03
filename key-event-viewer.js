@@ -170,15 +170,22 @@ function init() {
 		["text", "Note: Options apply to new events only."],
 	];
 
-	// Remove read-only option for contenteditable.
+	var isContentEditable = false;
 	var el = document.getElementById("input");
 	if (el.tagName == "DIV") {
+		isContentEditable = true;
+	}
+
+	// Remove read-only option for contenteditable.
+	if (isContentEditable) {
 		extra_options.shift();
 	}
 
 	createOptions(document.getElementById("options"), _key_event_info, _key_table_info, extra_options);
 	injectCustomCSS(_key_event_info, _key_table_info);
-	updateReadonly();
+	if (!isContentEditable) {
+		updateReadonly();
+	}
 	resetTable(false);
 
 	var input = document.getElementById("input");
