@@ -160,6 +160,36 @@ function resetTable(resetData=true) {
 	setInputFocus(resetData);
 }
 
+var _inFullscreen = false;
+
+function toggleFullscreen() {
+	var button = document.getElementById("toggleFullscreen");
+	if (_inFullscreen) {
+		document.exitFullscreen();
+		_inFullscreen = false;
+		button.value = "Enter Fullscreen"
+	} else {
+		document.body.requestFullscreen();
+		_inFullscreen = true;
+		button.value = "Exit Fullscreen"
+	}
+}
+
+var _isKeyboardLock = false;
+
+function toggleKeyboardLock() {
+	var button = document.getElementById("toggleKeyboardLock");
+	if (_isKeyboardLock) {
+		navigator.keyboard.unlock();
+		_isKeyboardLock = false;
+		button.value = "Enable KeyboardLock"
+	} else {
+		navigator.keyboard.lock();
+		_isKeyboardLock = true;
+		button.value = "Disable KeyboardLock"
+	}
+}
+
 function init() {
 	setUserAgentText();
 	var extra_options = [
