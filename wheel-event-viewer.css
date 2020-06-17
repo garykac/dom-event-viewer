@@ -1,0 +1,13 @@
+.hilite_target {
+	background-color: #c0ffc0;
+	padding: 0 10px;
+}
+
+#target {
+	background-color: #c0ffc0;
+	border: 1px solid black;
+	margin: 10px 30px;
+	padding: 20px;
+	display: inline-block;
+}
+
