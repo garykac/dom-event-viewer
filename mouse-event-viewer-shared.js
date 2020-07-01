@@ -92,6 +92,7 @@ function init_shared() {
 	setUserAgentText();
 	var extra_options = [
 		["checkbox", "combine_mousemove", "Combine mousemove events with same target", {}],
+		["checkbox", "suppress_contextmenu", "Suppress the context menu", {}],
 		["text", "Note: Options apply to new events only."],
 		["text", "Press 'c' to Clear Table."],
 	];
@@ -108,8 +109,11 @@ function onKeyDown(e) {
 }
 
 function onContextMenu(e) {
-	e.preventDefault();
-	e.stopPropagation();
+	var suppress = document.getElementById("suppress_contextmenu");
+	if (suppress.checked) {
+		e.preventDefault();
+		e.stopPropagation();
+	}
 }
 
 function onMouseDown(handler, e) {
