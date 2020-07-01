@@ -127,6 +127,7 @@ function init() {
 		addEventListener(div, "auxclick", onAuxClick.bind(null, div));
 		addEventListener(div, "click", onClick.bind(null, div));
 		addEventListener(div, "dblclick", onDblClick.bind(null, div));
+		addEventListener(div, "contextmenu", onContextMenu.bind(null, div));
 	}
 
 	addEventListener(document.getElementById("body"), "keydown", onKeyDown);

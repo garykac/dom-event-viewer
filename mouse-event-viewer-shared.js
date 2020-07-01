@@ -72,6 +72,13 @@ var _mouse_event_info = [
 		'Highlight': {},
 		},
 		"#ccccff"],
+	["contextmenu", {
+		'preventDefault': {'checked': true},
+		'stopPropagation': {},
+		'ShowEvents': {},
+		'Highlight': {},
+		},
+		"#ccffff"],
 ];
 
 var _lastMouseMoveTarget = "";
@@ -92,7 +99,6 @@ function init_shared() {
 	setUserAgentText();
 	var extra_options = [
 		["checkbox", "combine_mousemove", "Combine mousemove events with same target", {}],
-		["checkbox", "suppress_contextmenu", "Suppress the context menu", {}],
 		["text", "Note: Options apply to new events only."],
 		["text", "Press 'c' to Clear Table."],
 	];
@@ -108,12 +114,8 @@ function onKeyDown(e) {
 	}
 }
 
-function onContextMenu(e) {
-	var suppress = document.getElementById("suppress_contextmenu");
-	if (suppress.checked) {
-		e.preventDefault();
-		e.stopPropagation();
-	}
+function onContextMenu(handler, e) {
+	handleMouseEvent("contextmenu", handler, e);
 }
 
 function onMouseDown(handler, e) {
