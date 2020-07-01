@@ -51,6 +51,27 @@ var _mouse_event_info = [
 		'Highlight': {},
 		},
 		"#e0e0e0"],
+	["auxclick", {
+		'preventDefault': {'checked': false},
+		'stopPropagation': {},
+		'ShowEvents': {},
+		'Highlight': {},
+		},
+		"#ccccff"],
+	["click", {
+		'preventDefault': {'checked': false},
+		'stopPropagation': {},
+		'ShowEvents': {},
+		'Highlight': {},
+		},
+		"#ccccff"],
+	["dblclick", {
+		'preventDefault': {'checked': false},
+		'stopPropagation': {},
+		'ShowEvents': {},
+		'Highlight': {},
+		},
+		"#ccccff"],
 ];
 
 var _lastMouseMoveTarget = "";
@@ -129,6 +150,18 @@ function onMouseOver(handler, e) {
 
 function onMouseUp(handler, e) {
 	handleMouseEvent("mouseup", handler, e);
+}
+
+function onAuxClick(handler, e) {
+	handleMouseEvent("auxclick", handler, e);
+}
+
+function onClick(handler, e) {
+	handleMouseEvent("click", handler, e);
+}
+
+function onDblClick(handler, e) {
+	handleMouseEvent("dblclick", handler, e);
 }
 
 function handleMouseEvent(etype, handler, e) {

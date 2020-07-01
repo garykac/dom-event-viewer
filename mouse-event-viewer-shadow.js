@@ -138,6 +138,9 @@ function init() {
 		addEventListener(div, "mouseout", onMouseOut.bind(null, div));
 		addEventListener(div, "mouseover", onMouseOver.bind(null, div));
 		addEventListener(div, "mouseup", onMouseUp.bind(null, div));
+		addEventListener(div, "auxclick", onAuxClick.bind(null, div));
+		addEventListener(div, "click", onClick.bind(null, div));
+		addEventListener(div, "dblclick", onDblClick.bind(null, div));
 	}
 
 	addEventListener(document.getElementById("body"), "keydown", onKeyDown);
