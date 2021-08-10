@@ -23,6 +23,31 @@
 	padding: 0 10px;
 }
 
+.hilite_related_a {
+	background-color: #e0ffe0;
+	padding: 0 10px;
+}
+
+.hilite_related_b {
+	background-color: #ffe0ff;
+	padding: 0 10px;
+}
+
+.hilite_related_c {
+	background-color: #e0ffff;
+	padding: 0 10px;
+}
+
+.hilite_related_d {
+	background-color: #e0e0e0;
+	padding: 0 10px;
+}
+
+.hilite_related_e {
+	background-color: #a0a0a0;
+	padding: 0 10px;
+}
+
 .hilite_handler_a {
 	padding: 0 10px;
 }

@@ -22,6 +22,16 @@ var _mouse_table_info = [
 		'header-background': "#ffffff"
 	}],
 
+	// MouseEvent - relatedTarget
+	["relatedTarget", "relatedTarget", [
+		["rA", "relatedTarget", "text", {'style': 'hilite_related_a'}],
+		["rB", "relatedTarget", "text", {'style': 'hilite_related_b'}],
+		["rC", "relatedTarget", "text", {'style': 'hilite_related_c'}],
+	], {
+		'checked': false,
+		'header-background': "#ffffff"
+	}],
+
 	// MouseEvent - Handler
 	["Handler", "handler", [
 		["hA", "handler", "text", {'style': 'hilite_handler_a'}],

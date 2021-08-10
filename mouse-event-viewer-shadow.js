@@ -24,6 +24,18 @@ var _mouse_table_info = [
 		'header-background': "#ffffff"
 	}],
 
+	// MouseEvent - relatedTarget
+	["relatedTarget", "relatedTarget", [
+		["rA", "relatedTarget", "text", {'style': 'hilite_related_a'}],
+		["rB", "relatedTarget", "text", {'style': 'hilite_related_b'}],
+		["rC", "relatedTarget", "text", {'style': 'hilite_related_c'}],
+		["srD", "relatedTarget", "text", {'style': 'hilite_related_d'}],
+		["srE", "relatedTarget", "text", {'style': 'hilite_related_e'}],
+	], {
+		'checked': true,
+		'header-background': "#ffffff"
+	}],
+
 	// Event
 	["Event", "event", [
 		["eventPhase", "event", "text"],

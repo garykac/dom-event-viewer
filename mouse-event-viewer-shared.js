@@ -186,6 +186,7 @@ function addMouseEvent(etype, handler, e) {
 		e = window.event;
 	}
 	var target = e.target.id;
+	var relatedTarget = e.relatedTarget ? e.relatedTarget.id : "";
 	var handler = handler.id;
 	var eventinfo = {};
 	eventinfo["Event type"] = calcHilightString(etype, e.type, true);
@@ -196,6 +197,12 @@ function addMouseEvent(etype, handler, e) {
 	eventinfo["C"] = (target == "div_c" ? "C" : "");
 	eventinfo["sD"] = (target == "div_d" ? "sD" : "");
 	eventinfo["sE"] = (target == "div_e" ? "sE" : "");
+
+	eventinfo["rA"] = (relatedTarget == "div_a" ? "A" : "");
+	eventinfo["rB"] = (relatedTarget == "div_b" ? "B" : "");
+	eventinfo["rC"] = (relatedTarget == "div_c" ? "C" : "");
+	eventinfo["srD"] = (relatedTarget == "div_d" ? "sD" : "");
+	eventinfo["srE"] = (relatedTarget == "div_e" ? "sE" : "");
 
 	eventinfo["hA"] = (handler == "div_a" ? (handler == target ? "-" : "A") : "");
 	eventinfo["hB"] = (handler == "div_b" ? (handler == target ? "-" : "B") : "");
