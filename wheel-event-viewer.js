@@ -88,6 +88,18 @@ var _wheel_table_info = [
 		'checked': true,
 		'header-background': "#c0f0c0"
 	}],
+
+	// KeyboardEvent - Modifiers
+	["Modifiers", "modifiers", [
+		["getModifierState", "modifiers", "text"],
+		["shift", "modifiers", "bool"],
+		["ctrl", "modifiers", "bool"],
+		["alt", "modifiers", "bool"],
+		["meta", "modifiers", "bool"],
+	], {
+		'checked': true,
+		'header-background': "#ffc0c0"
+	}],
 ];
 
 function setUserAgentText() {
