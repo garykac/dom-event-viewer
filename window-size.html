@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Window Size</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<style>
+html {
+	height: 100%;
+}
+body {
+	font-family: "Arial", sans-serif;
+	height: 100%;
+	margin: 0;
+}
+p {
+	margin: 4px;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	user-select: none;
+}
+.row, .row_center {
+	flex: 0 0 content;
+	display: flex;
+	flex-direction: row;
+}
+.row {
+	justify-content: space-between;
+}
+.row_center {
+	justify-content: center;
+}
+.row, .row_center > div {
+	flex: 0 0 content;
+}
+.tl {
+	text-align: left;
+}
+.tr {
+	text-align: right;
+}
+.center {
+	text-align: center;
+}
+.bl {
+	align-self: flex-end;
+	text-align: left;
+}
+.br {
+	align-self: flex-end;
+	text-align: right;
+}
+</style>
+
+<body id="body">
+<div class="container">
+	<div class="row">
+		<div class="tl">
+			<div id="tl_text"></div>
+		</div>
+		<div class="tr">
+			<div id="tr_text"></div>
+		</div>
+	</div>
+	<div class="row_center">
+		<div class="center">
+			<div id="center_text"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="bl">
+			<div id="bl_text"></div>
+		</div>
+		<div class="br">
+			<div id="br_text"></div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+<script language="javascript">
+
+window.addEventListener("click", updateInfoClick);
+window.addEventListener("load", updateInfoLoad);
+window.addEventListener("resize", updateInfoResize);
+
+async function updateInfoClick(e) {
+	var d, out;
+	console.log("===== mouse click");
+	updateInfo();
+
+	out = "mouse click: screenX,Y: " + e.screenX + "," + e.screenY;
+	out += " clientX,Y: " + e.clientX + "," + e.clientY;
+	console.log(out);
+
+	d = document;
+	out = "<p>Mouse click</p>";
+	out += "<p>screenX,Y: " + e.screenX + "," + e.screenY + "</p>";
+	out += "<p>clientX,Y: " + e.screenX + "," + e.screenY + "</p>";
+	d.getElementById("center_text").innerHTML = out;
+}
+
+async function updateInfoLoad() {
+	console.log("===== load");
+	updateInfo();
+}
+
+async function updateInfoResize() {
+	console.log("===== window resize");
+	updateInfo();
+}
+
+async function updateInfoMove() {
+	console.log("===== window move");
+	updateInfo();
+}
+
+async function updateInfo() {
+	var w, d, out;
+	w = window;
+	d = document;
+
+	out = "window outer: screenX,Y: " + w.screenX + "," + w.screenY;
+	out += " size: " + w.outerWidth + "," + w.outerHeight;
+	console.log(out);
+
+	out = "window inner: screenX,Y: ?,?";
+	out += " size: " + w.innerWidth + "," + w.innerHeight;
+	console.log(out);
+
+	out = "<p>outer screenX,Y: " + w.screenX + "," + w.screenY + "</p>";
+	out += "<p>inner screenX,Y: ?,?</p>";
+	d.getElementById("tl_text").innerHTML = out;
+
+	out = "<p>outerWidth: " + w.outerWidth + "</p>";
+	out += "<p>innerWidth: " + w.innerWidth + "</p>";
+	d.getElementById("tr_text").innerHTML = out;
+
+	out = "<p>outerHeight: " + w.outerHeight + "</p>";
+	out += "<p>innerHeight: " + w.innerHeight + "</p>";
+	d.getElementById("bl_text").innerHTML = out;
+
+	out = "<p>devicePixelRatio: " + w.devicePixelRatio + "</p>";
+	out += "<p>visualViewport.scale: " + w.visualViewport.scale + "</p>";
+	d.getElementById("br_text").innerHTML = out;
+
+	// Append the screen info if we have permission.
+	details = await w.getScreenDetails();
+	screen = details.currentScreen;
+	out += "<p>ScreenDetailed: " + screen.label + " dpr: " + screen.devicePixelRatio + "</p>";
+	d.getElementById("br_text").innerHTML = out;
+}
+
+var lastScreenX = window.screenX;
+var lastScreenY = window.screenY;
+
+setInterval(checkWindowMove, 250);
+
+async function checkWindowMove() {
+	var sX = window.screenX;
+	var sY = window.screenY;
+	if (lastScreenX != sX || lastScreenY != sY) {
+		lastScreenX = sX;
+		lastScreenY = sY;
+		updateInfoMove();
+		
+	}
+}
+</script>
+
+</html>
