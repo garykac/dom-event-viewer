@@ -70,6 +70,7 @@ p {
 	</div>
 	<div class="row_center">
 		<div class="center">
+			<p>Mouse click</p>
 			<div id="center_text"></div>
 		</div>
 	</div>
@@ -101,8 +102,7 @@ async function updateInfoClick(e) {
 	console.log(out);
 
 	d = document;
-	out = "<p>Mouse click</p>";
-	out += "<p>screenX,Y: " + e.screenX + "," + e.screenY + "</p>";
+	out = "<p>screenX,Y: " + e.screenX + "," + e.screenY + "</p>";
 	out += "<p>clientX,Y: " + e.screenX + "," + e.screenY + "</p>";
 	d.getElementById("center_text").innerHTML = out;
 }
