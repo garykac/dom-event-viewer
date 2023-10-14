@@ -1,9 +1,20 @@
-.hilite_target {
+.hilite_div_a {
 	background-color: #c0ffc0;
 	padding: 0 10px;
 }
 
-#target {
+.hilite_div_b {
+	background-color: #ffc0ff;
+	padding: 0 10px;
+}
+
+.hilite_div_c {
+	background-color: #c0ffff;
+	padding: 0 10px;
+}
+
+
+#div_a {
 	background-color: #c0ffc0;
 	border: 1px solid black;
 	margin: 10px 30px;
@@ -11,3 +22,24 @@
 	display: inline-block;
 }
 
+#div_b {
+	background-color: #ffc0ff;
+	border: 1px solid black;
+	margin: 10px 30px;
+	padding: 10px;
+	height: 80px;
+	overflow: scroll;
+	display: inline-block;
+}
+
+#div_c {
+	background-color: #c0ffff;
+	border: 1px solid black;
+	margin: 10px 30px;
+	padding: 20px;
+	display: inline-block;
+}
+
+#scrollable {
+	height: 100vh;
+}

@@ -84,6 +84,7 @@ var _wheel_table_info = [
 		["deltaY", "wheel", "text"],
 		["deltaZ", "wheel", "text"],
 		["deltaMode", "wheel", "text"],
+		["target", "wheel", "text"],
 	], {
 		'checked': true,
 		'header-background': "#c0f0c0"
@@ -111,7 +112,7 @@ function init() {
 	injectCustomCSS(_wheel_event_info, _wheel_table_info);
 	resetTable();
 
-	var target = document.getElementById("target");
+	var target = document.getElementById("div_a");
 	addEventListener(target, "mousedown", onMouseDown);
 	addEventListener(target, "mouseup", onMouseUp);
 	addEventListener(target, "wheel", onWheel);
@@ -191,6 +192,7 @@ function addMouseEvent(etype, e) {
 	eventinfo["deltaX"] = e.deltaX;
 	eventinfo["deltaY"] = e.deltaY;
 	eventinfo["deltaZ"] = e.deltaZ;
+	eventinfo["target"] = e.target.id;
 	
 	var deltaMode = "-";
 	if (etype == "wheel") {
