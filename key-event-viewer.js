@@ -11,6 +11,15 @@ var _key_table_info = [
 		'header-background': "#e0e0e0"
 	}],
 
+	// Timing
+	["Timestamp", "timestamp", [
+		["Timestamp", "timestamp", "text"],
+	], {
+		'grouplabel': false,
+		'checked': false,
+		'header-background': "#bbdefb"
+	}],
+
 	// KeyboardEvent - Legacy
 	["Legacy", "legacy", [
 		["charCode", "legacy", "html"],
@@ -263,6 +272,7 @@ function addKeyEvent(etype, e) {
 	}
 	var eventinfo = {};
 	eventinfo["Event type"] = calcHilightString(etype, e.type, true);
+	eventinfo["Timestamp"] = Date.now();
 	eventinfo["charCode"] = calcRichKeyVal(etype, "charCode", e.charCode);
 	eventinfo["keyCode"] = calcRichKeyVal(etype, "keyCode", e.keyCode);
 	eventinfo["which"] = e.which;
